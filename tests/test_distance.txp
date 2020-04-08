@@ -25,7 +25,7 @@ open Typography
 open Document
 open Document.Mathematical
 open Maths
-open Fonts
+open Patfonts
 open FTypes
 open Distance
 
