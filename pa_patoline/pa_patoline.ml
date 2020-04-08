@@ -1,7 +1,7 @@
 open Earley_core
 open Earley_ocaml
 open Unicodelib
-open Patconfig
+open! PatConfig
 open Patutil.Extra
 
 open Earley
@@ -854,7 +854,7 @@ let build_grammar () =
 (* add grammar now, but not build yet *)
 let add_grammar g =
   let open PatConfig in
-  let (gpath, gpaths) = patoconfig.grammars_dir in
+  let (gpath, gpaths) = patoConfig.grammars_dir in
   let path = "." :: ".patobuild" :: gpath :: gpaths in
   if !no_default_grammar && g = "DefaultGrammar" then () else
     begin

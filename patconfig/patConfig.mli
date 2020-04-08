@@ -1,4 +1,4 @@
-type patoconfig =
+type patoConfig =
   { mutable fonts_dir      : string * string list
   ; mutable grammars_dir   : string * string list
   ; mutable hyphen_dir     : string * string list
@@ -7,7 +7,7 @@ type patoconfig =
   ; mutable max_iter       : int
   ; mutable user_dir       : string }
 
-val patoconfig : patoconfig
+val patoConfig : patoConfig
 
 (* These functions may raise [Not_found]. *)
 val findFont    : string -> string

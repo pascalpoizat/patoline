@@ -26,7 +26,7 @@ open Patutil
 open Extra
 open Fonts
 open Box
-open Patconfig.PatConfig
+open PatConfig
 open Patoraw
 
 let _=Random.self_init ()
@@ -39,7 +39,7 @@ let findFont = ConfigFindFont.findFont
 
 let sprint_page_number = ref string_of_int
 let page_number_vpos   = ref 30.0
-let max_iterations     = ref patoconfig.max_iter
+let max_iterations     = ref patoConfig.max_iter
 let quiet = ref false
 
 let spec =

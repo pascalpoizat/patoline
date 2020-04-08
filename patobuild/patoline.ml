@@ -17,7 +17,7 @@
   You should have received a copy of the GNU General Public License
   along with Patoline.  If not, see <http://www.gnu.org/licenses/>.
 *)
-open Patconfig.PatConfig
+open PatConfig
 
 (** Parse a string containing a command line options and returns the list.
     This function is useful to be able to forward command line options. *)
@@ -146,9 +146,9 @@ let usage =
 let _ =
   match Sys.argv with
   | [| _ ; "drivers" |] -> let f = Printf.printf "%s\n" in
-                           List.iter f patoconfig.drivers; exit 0
+                           List.iter f patoConfig.drivers; exit 0
   | [| _ ; "formats" |] -> let f = Printf.printf "%s\n" in
-                           List.iter f patoconfig.formats; exit 0
+                           List.iter f patoConfig.formats; exit 0
   | [| _ ; "config"  |] -> print_config stdout; exit 0
   | _                   -> Arg.parse spec add_file (usage Sys.argv.(0))
 
@@ -163,14 +163,14 @@ let cfg =
   let driver_packages =
     match !pat_driver with
     | None                                      -> ["patoline.driver.Pdf"]
-    | Some d when List.mem d patoconfig.drivers -> ["patoline.driver." ^ d]
+    | Some d when List.mem d patoConfig.drivers -> ["patoline.driver." ^ d]
     | _                                         -> []
   in
   let format_packages =
     match !pat_format with
     | None                                      -> []
     | Some "DefaultFormat"                      -> []
-    | Some f when List.mem f patoconfig.formats -> ["patoline.format." ^ f]
+    | Some f when List.mem f patoConfig.formats -> ["patoline.format." ^ f]
     | _                                         -> []
   in
   let packages = !packages @ format_packages @ driver_packages in

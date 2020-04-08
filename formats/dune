@@ -3,7 +3,7 @@
   (public_name patoline.format.DefaultFormat)
   (modules DefaultFormat)
   (wrapped false)
-  (libraries typography patconfig patoraw unicodelib hyphen))
+  (libraries typography patConfig patoraw unicodelib hyphen))
 
 (library
   (name FormatArticle)

@@ -1,5 +1,5 @@
 open Parallel
-open Patconfig.PatConfig
+open PatConfig
 open Patutil.Extra
 
 (* Time representation as a float. *)
@@ -444,7 +444,7 @@ let extend_config config ls =
   let set_format config f =
     if config.pat_format <> None then config else
     let packages =
-      if List.mem f patoconfig.formats then
+      if List.mem f patoConfig.formats then
         ("patoline.format." ^ f) :: config.packages
       else config.packages
     in
@@ -453,7 +453,7 @@ let extend_config config ls =
   let set_driver config d =
     if config.pat_driver <> None then config else
     let packages =
-      if List.mem d patoconfig.drivers then
+      if List.mem d patoConfig.drivers then
         ("patoline.driver." ^ d) :: config.packages
       else config.packages
     in

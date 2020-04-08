@@ -1,5 +1,5 @@
 (library
-  (name patconfig)
-  (public_name patoline.patconfig)
+  (name patConfig)
+  (public_name patoline.patConfig)
   (modules :standard)
   (libraries unix))

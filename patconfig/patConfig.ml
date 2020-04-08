@@ -30,7 +30,7 @@ end
 
 module Conf = Make(Spec)
 
-type patoconfig =
+type patoConfig =
   { mutable fonts_dir      : string * string list
   ; mutable grammars_dir   : string * string list
   ; mutable hyphen_dir     : string * string list
@@ -41,8 +41,8 @@ type patoconfig =
 
 let debug = false
 
-let patoconfig : patoconfig =
-  if debug then Printf.eprintf "########## patoconfig creation !\n%!";
+let patoConfig : patoConfig =
+  if debug then Printf.eprintf "########## patoConfig creation !\n%!";
   let cfg = Conf.get_config () in
   let open Data in
   let get_s k = to_string (Config.get k cfg) in
@@ -77,23 +77,23 @@ let findPath ?(subdir=false) (path, paths) fname =
     | p::ps -> try search p with Not_found -> find ps
   in find (List.rev (path :: paths))
 
-let findFont    fn = findPath ~subdir:true patoconfig.fonts_dir fn
-let findGrammar fn = findPath patoconfig.grammars_dir fn
-let findHyphen  fn = findPath patoconfig.hyphen_dir fn
+let findFont    fn = findPath ~subdir:true patoConfig.fonts_dir fn
+let findGrammar fn = findPath patoConfig.grammars_dir fn
+let findHyphen  fn = findPath patoConfig.hyphen_dir fn
 
 let add_fonts_dir d =
   if debug then Printf.eprintf "########## Adding fonts dir %S\n%!" d;
-  let (p, ps) = patoconfig.fonts_dir in
-  patoconfig.fonts_dir <- (p, ps @ [d])
+  let (p, ps) = patoConfig.fonts_dir in
+  patoConfig.fonts_dir <- (p, ps @ [d])
 
 let add_grammars_dir d =
   if debug then Printf.eprintf "########## Adding grammars dir %S\n%!" d;
-  let (p, ps) = patoconfig.grammars_dir in
-  patoconfig.grammars_dir <- (p, ps @ [d])
+  let (p, ps) = patoConfig.grammars_dir in
+  patoConfig.grammars_dir <- (p, ps @ [d])
 
 let add_hyphen_dir d =
   if debug then Printf.eprintf "########## Adding hyphen dir %S\n%!" d;
-  let (p, ps) = patoconfig.hyphen_dir in
-  patoconfig.hyphen_dir <- (p, ps @ [d])
+  let (p, ps) = patoConfig.hyphen_dir in
+  patoConfig.hyphen_dir <- (p, ps @ [d])
 
 let print_config = Conf.print_config
